@@ -1,125 +1,131 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Project Alpha / 热阿尔法计划 — 面向新一代 AI 计算的数据中心智能热管理与 TropicAI 战略软件平台。" />
-  <title data-i18n="meta.pageTitle">热阿尔法计划 | 智能热管理解决方案</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <title>Project Alpha | Intelligent Thermal Management Solution</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root { --header-h: 5rem; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Noto Sans SC', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    .chart-container { position: relative; width: 100%; max-width: 900px; margin-inline: auto; height: 380px; }
-    @media (max-width: 768px) { .chart-container { height: 300px; } }
-    .scroll-mt-header { scroll-margin-top: var(--header-h); }
-    .lang-btn.active { background-color: #2563eb; color: #fff; }
-    .data-table { width: 100%; min-width: 760px; border-collapse: collapse; }
-    .data-table th, .data-table td { border: 1px solid #e2e8f0; padding: 12px; text-align: left; vertical-align: top; }
-    .data-table th, .data-table td:first-child { background-color: #f8fafc; font-weight: 600; }
+    :root{ --blue:#2563EB; --slate:#1e293b; --muted:#64748b; }
+    body{ font-family:'Noto Sans SC',system-ui,Segoe UI,Roboto,Arial,sans-serif; background:#f8fafc; color:var(--slate); }
+    html{ scroll-behavior:smooth; }
+    .chart-container{ position:relative; width:100%; max-width:880px; height:420px; margin:auto; }
+    @media (max-width:768px){ .chart-container{ height:320px; } }
+    .lang-btn.active{ background:var(--blue); color:#fff; }
+    .data-table{ width:100%; min-width:680px; border-collapse:collapse; }
+    .data-table th,.data-table td{ border:1px solid #e2e8f0; padding:12px; text-align:left; vertical-align:top; }
+    .data-table th{ background:#f8fafc; font-weight:600; }
+    .scroll-mt-header{ scroll-margin-top:5rem; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
+
   <!-- Header -->
-  <header class="bg-white/95 backdrop-blur sticky top-0 z-50 shadow-sm" role="banner">
-    <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Primary">
-      <div class="flex items-center justify-between h-20">
-        <a href="#overview" class="text-2xl font-bold text-blue-700" data-i18n="header.brand">热阿尔法计划</a>
-        <button id="mobileMenuBtn" class="md:hidden inline-flex items-center gap-2 px-3 py-2 rounded-md border text-slate-700" aria-controls="mobileMenu" aria-expanded="false">
-          <span class="i18n" data-i18n="nav.open">打开主菜单</span>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex items-center space-x-3">
+          <span class="text-2xl font-bold text-blue-700" data-i18n="brand">Project Alpha</span>
+        </div>
+        <div class="hidden md:block">
+          <ul class="flex items-center space-x-4">
+            <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#overview" data-i18n="nav.overview">Overview</a></li>
+            <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#market" data-i18n="nav.market">Market Pain</a></li>
+            <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#solution" data-i18n="nav.solution">Solution</a></li>
+            <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#validation" data-i18n="nav.validation">Validation</a></li>
+            <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#strategy" data-i18n="nav.strategy">Strategic Thesis</a></li>
+            <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#sgvc" data-i18n="nav.sgvc">SG Gov / VC Summary</a></li>
+            <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#team" data-i18n="nav.team">Team & Partners</a></li>
+          </ul>
+        </div>
+        <button id="mobileMenuBtn" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600" aria-controls="mobileMenu" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
         </button>
-        <ul class="hidden md:flex items-center gap-3 text-sm font-medium">
-          <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#overview" data-i18n="nav.overview">项目概览</a></li>
-          <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#market" data-i18n="nav.market">市场痛点</a></li>
-          <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#solution" data-i18n="nav.solution">解决方案</a></li>
-          <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#validation" data-i18n="nav.validation">项目验证</a></li>
-          <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#strategy" data-i18n="nav.strategy">战略课题</a></li>
-          <li><a class="px-3 py-2 rounded hover:text-blue-600" href="#sgvc" data-i18n="nav.sgvc">政府/VC总结</a></li>
-          $1
-        </ul>
       </div>
-      <div id="mobileMenu" class="hidden md:hidden" role="dialog" aria-label="Mobile">
-        <ul class="pb-4 space-y-1">
-          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#overview" data-i18n="nav.overview">项目概览</a></li>
-          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#market" data-i18n="nav.market">市场痛点</a></li>
-          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#solution" data-i18n="nav.solution">解决方案</a></li>
-          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#validation" data-i18n="nav.validation">项目验证</a></li>
-          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#strategy" data-i18n="nav.strategy">战略课题</a></li>
-          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#sgvc" data-i18n="nav.sgvc">政府/VC总结</a></li>
-          $1
+      <div id="mobileMenu" class="md:hidden hidden pb-4">
+        <ul class="space-y-1 pt-2">
+          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#overview" data-i18n="nav.overview">Overview</a></li>
+          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#market" data-i18n="nav.market">Market Pain</a></li>
+          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#solution" data-i18n="nav.solution">Solution</a></li>
+          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#validation" data-i18n="nav.validation">Validation</a></li>
+          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#strategy" data-i18n="nav.strategy">Strategic Thesis</a></li>
+          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#sgvc" data-i18n="nav.sgvc">SG Gov / VC Summary</a></li>
+          <li><a class="block px-3 py-2 rounded hover:text-blue-600" href="#team" data-i18n="nav.team">Team & Partners</a></li>
         </ul>
       </div>
     </nav>
   </header>
 
   <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
     <!-- Overview -->
     <section id="overview" class="mb-16 scroll-mt-header">
-      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="overview.title">项目概览：战略交汇点</h2>
-      <p class="text-lg text-slate-700 mb-8" data-i18n="overview.p1">“热阿尔法计划”诞生于一个关键的历史交汇点。本项目旨在利用三大不可逆转的市场力量，在新加坡的创新土壤上，为全球AI基础设施打造下一代智能热管理的核心技术与领导企业。</p>
-      <div class="flex flex-col md:flex-row items-center justify-center gap-8 p-6 bg-white rounded-lg shadow">
+      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="overview.title">Overview: A Strategic Intersection</h2>
+      <p class="text-lg text-slate-700 mb-8" data-i18n="overview.p1">Project Alpha is born at a critical historical intersection. This project leverages three irreversible market forces—AI cooling crisis, PFAS ban, and Singapore's Deep Tech strategy—to build next‑gen intelligent thermal management for global AI infrastructure.</p>
+
+      <div class="flex flex-col md:flex-row items-center justify-center gap-8 p-6 bg-white rounded-lg shadow-lg">
         <div class="flex-1 space-y-4 p-4">
-          <div class="bg-slate-100 p-4 rounded-lg">
-            <h4 class="font-semibold text-blue-700" data-i18n="overview.force1.title">AI散热危机</h4>
-            <p class="text-sm text-slate-600" data-i18n="overview.force1.desc">AI机柜功率超100kW，传统风冷已达物理极限。</p>
+          <div class="bg-slate-100 p-4 rounded-lg shadow-inner">
+            <h4 class="font-semibold text-blue-700" data-i18n="overview.force1.title">AI Cooling Crisis</h4>
+            <p class="text-sm text-slate-600" data-i18n="overview.force1.desc">AI cabinet power >100kW; traditional air cooling has hit physical limits.</p>
           </div>
-          <div class="bg-slate-100 p-4 rounded-lg">
-            <h4 class="font-semibold text-blue-700" data-i18n="overview.force2.title">PFAS禁令</h4>
-            <p class="text-sm text-slate-600" data-i18n="overview.force2.desc">全球即将禁用“永久化学品”冷却剂，现有高效液冷方案面临合规挑战。</p>
+          <div class="bg-slate-100 p-4 rounded-lg shadow-inner">
+            <h4 class="font-semibold text-blue-700" data-i18n="overview.force2.title">PFAS Ban</h4>
+            <p class="text-sm text-slate-600" data-i18n="overview.force2.desc">Impending global ban on "forever chemical" coolants challenges legacy liquid cooling.</p>
           </div>
-          <div class="bg-slate-100 p-4 rounded-lg">
-            <h4 class="font-semibold text-blue-700" data-i18n="overview.force3.title">新加坡国家战略</h4>
-            <p class="text-sm text-slate-600" data-i18n="overview.force3.desc">巩固其全球深度科技（Deep Tech）中心地位，亟需核心技术创新。</p>
+          <div class="bg-slate-100 p-4 rounded-lg shadow-inner">
+            <h4 class="font-semibold text-blue-700" data-i18n="overview.force3.title">Singapore Strategy</h4>
+            <p class="text-sm text-slate-600" data-i18n="overview.force3.desc">Strengthen Singapore as a global Deep Tech hub via core tech innovation.</p>
           </div>
         </div>
-        <div class="hidden md:block text-5xl text-blue-600 mx-8">→</div>
-        <div class="md:hidden text-5xl text-blue-600 my-2">↓</div>
-        <div class="flex-1 p-6 bg-blue-600 text-white rounded-lg text-center">
-          <h3 class="text-2xl font-bold mb-2" data-i18n="overview.opportunity.title">千载难逢的机遇</h3>
-          <p class="text-lg" data-i18n="overview.opportunity.subtitle">“热阿尔法计划”</p>
-          <p class="mt-2 font-light" data-i18n="overview.opportunity.desc">打造高效、安全、合规的智能热管理解决方案。</p>
+        <div class="flex-shrink-0 text-5xl text-blue-600 mx-8 hidden md:block">→</div>
+        <div class="flex-shrink-0 text-5xl text-blue-600 my-4 md:hidden">↓</div>
+        <div class="flex-1 p-6 bg-blue-600 text-white rounded-lg shadow-xl text-center">
+          <h3 class="text-2xl font-bold mb-2" data-i18n="overview.opportunity.title">A Generational Opportunity</h3>
+          <p class="text-lg" data-i18n="overview.opportunity.subtitle">Project Alpha</p>
+          <p class="mt-2 font-light" data-i18n="overview.opportunity.desc">Efficient, safe, and compliant intelligent thermal management.</p>
         </div>
       </div>
     </section>
 
     <!-- Market -->
     <section id="market" class="mb-16 scroll-mt-header">
-      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="market.title">市场痛点与机遇</h2>
-      <p class="text-lg text-slate-700 mb-8" data-i18n="market.p1">现有风冷技术已无法满足AI驱动的高功率密度散热需求。同时，现有液冷方案则面临着灾难性泄漏风险和环境法规（PFAS禁令）的双重挑战。市场亟需一个高效、安全且合规的颠覆性解决方案。</p>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-xl font-semibold text-center mb-4" data-i18n="market.chart.title">数据中心散热技术能力对比</h3>
-        <div class="chart-container"><canvas id="coolingChart" aria-label="Cooling capability bar chart"></canvas></div>
-        <p class="text-center text-slate-600 mt-4" data-i18n="market.chart.caption">“热阿尔法计划”的智能液冷方案旨在突破100kW+机柜的散热瓶颈，同时解决可靠性与合规性问题。</p>
+      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="market.title">Market Pain & Opportunity</h2>
+      <p class="text-lg text-slate-700 mb-8" data-i18n="market.p1">Air cooling no longer meets AI high‑density loads; liquid cooling faces leak risks and PFAS‑compliance challenges. The market needs an efficient, safe, compliant disruptor.</p>
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold text-center mb-4" data-i18n="market.chart.mainTitle">Data Center Cooling Technology Capability Comparison</h3>
+        <div class="chart-container"><canvas id="coolingChart"></canvas></div>
+        <p class="text-center text-slate-600 mt-4" data-i18n="market.chart.caption">Alpha targets 100kW+ cabinets while addressing reliability & compliance.</p>
       </div>
     </section>
 
     <!-- Solution -->
     <section id="solution" class="mb-16 scroll-mt-header">
-      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="solution.title">解决方案：双轨创新</h2>
-      <p class="text-lg text-slate-700 mb-8" data-i18n="solution.p1">我们专注于一个被行业巨头忽视的关键利基市场：集成智能传感与微流控增强技术的冷却液分配单元（CDU）系统。我们采用双轨创新路径，构建坚实的竞争壁垒。</p>
+      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="solution.title">Solution: Dual‑Track Innovation</h2>
+      <p class="text-lg text-slate-700 mb-8" data-i18n="solution.p1">Focus on a neglected niche: a CDU system with intelligent sensing + microfluidic enhancement. Build barriers via hardware disruption + software moat.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow border-t-4 border-blue-500">
-          <div class="flex items-center mb-4"><span class="text-4xl mr-3">⚙️</span><h3 class="text-2xl font-semibold text-blue-700" data-i18n="solution.hardware.title">硬件颠覆</h3></div>
-          <p class="text-slate-600 mb-4" data-i18n="solution.hardware.p1">通过在新加坡研发制造微流控（Microfluidic）冷板，其散热效率是传统流道的3倍以上，从根本上提升热交换能力。</p>
+        <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-blue-500">
+          <div class="flex items-center mb-4"><span class="text-4xl mr-4">⚙️</span>
+            <h3 class="text-2xl font-semibold text-blue-700" data-i18n="solution.hardware.title">Hardware Disruption</h3></div>
+          <p class="text-slate-600 mb-4" data-i18n="solution.hardware.p1">Singapore‑made microfluidic cold plates deliver >3× heat‑transfer efficiency vs. legacy channels.</p>
           <ul class="list-disc list-inside space-y-2 text-slate-700">
-            <li data-i18n="solution.hardware.l1">微流控增强技术</li>
-            <li data-i18n="solution.hardware.l2">高效热交换</li>
-            <li data-i18n="solution.hardware.l3">新加坡本地研发制造</li>
+            <li data-i18n="solution.hardware.l1">Microfluidic enhancement</li>
+            <li data-i18n="solution.hardware.l2">High‑efficiency heat exchange</li>
+            <li data-i18n="solution.hardware.l3">Local R&D and manufacturing</li>
           </ul>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow border-t-4 border-teal-500">
-          <div class="flex items-center mb-4"><span class="text-4xl mr-3">🧠</span><h3 class="text-2xl font-semibold text-teal-700" data-i18n="solution.software.title">软件护城河</h3></div>
-          <p class="text-slate-600 mb-4" data-i18n="solution.software.p1">通过部署专有传感器和基于AI的预测性维护平台，将硬件转变为高利润的“硬件赋能的SaaS”业务，实现从“卖产品”到“卖服务”的转变。</p>
+        <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-teal-500">
+          <div class="flex items-center mb-4"><span class="text-4xl mr-4">🧠</span>
+            <h3 class="text-2xl font-semibold text-teal-700" data-i18n="solution.software.title">Software Moat</h3></div>
+          <p class="text-slate-600 mb-4" data-i18n="solution.software.p1">Proprietary sensors + AI predictive maintenance transform hardware into high‑margin Hardware‑enabled SaaS.</p>
           <ul class="list-disc list-inside space-y-2 text-slate-700">
-            <li data-i18n="solution.software.l1">AI预测性维护</li>
-            <li data-i18n="solution.software.l2">硬件赋能的SaaS模式</li>
-            <li data-i18n="solution.software.l3">防止泄漏的智能传感</li>
-            <li data-i18n="solution.software.l4">构建专有性能数据集</li>
+            <li data-i18n="solution.software.l1">AI predictive maintenance</li>
+            <li data-i18n="solution.software.l2">Hardware‑enabled SaaS</li>
+            <li data-i18n="solution.software.l3">Intelligent leak prevention</li>
+            <li data-i18n="solution.software.l4">Proprietary performance dataset</li>
           </ul>
         </div>
       </div>
@@ -127,441 +133,312 @@
 
     <!-- Validation -->
     <section id="validation" class="mb-16 scroll-mt-header">
-      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="validation.title">项目验证：原型机与核心技术</h2>
-      <p class="text-lg text-slate-700 mb-8" data-i18n="validation.p1">我们的技术路径并非空中楼阁。基于核心团队在机柜制造和液冷技术领域的深厚积累，我们已经（在VC报告时）生产出原型机，并形成了清晰的“液冷原生”机柜集成方案。这验证了我们解决行业核心痛点（如泄漏和部署复杂性）的能力。</p>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-xl font-semibold text-center mb-6" data-i18n="validation.subtitle1">核心技术集成方案</h3>
-        <div class="flex flex-col md:flex-row items-center justify-around gap-4 p-4 bg-slate-50 rounded mb-8">
-          <div class="text-center p-4"><span class="text-4xl">🏭</span><h4 class="font-semibold text-slate-700 mt-2" data-i18n="validation.partner1.name">华电晨光</h4><p class="text-sm text-slate-500" data-i18n="validation.partner1.desc">(机柜与集成能力)</p></div>
+      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="validation.title">Validation: Prototype & Core Technology</h2>
+      <p class="text-lg text-slate-700 mb-8" data-i18n="validation.p1">Backed by cabinet manufacturing + liquid‑cooling know‑how, we built a prototype and a "liquid‑native" integration plan, proving our ability to solve leakage & deployment complexity.</p>
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold text-center mb-6" data-i18n="validation.subtitle1">Core Integration</h3>
+        <div class="flex flex-col md:flex-row items-center justify-around gap-4 p-4 bg-slate-50 rounded-lg mb-8">
+          <div class="text-center p-4">
+            <span class="text-4xl">🏭</span>
+            <h4 class="font-semibold text-slate-700 mt-2" data-i18n="validation.partner1.name">Huadian Chenguang</h4>
+            <p class="text-sm text-slate-500" data-i18n="validation.partner1.desc">(Cabinet & Integration)</p>
+          </div>
           <div class="text-4xl text-blue-500 font-bold">+</div>
-          <div class="text-center p-4"><span class="text-4xl">💧</span><h4 class="font-semibold text-slate-700 mt-2" data-i18n="validation.partner2.name">英维克 (Envicool)</h4><p class="text-sm text-slate-500" data-i18n="validation.partner2.desc">(全链条液冷内核)</p></div>
-          <div class="hidden md:block text-4xl text-blue-500 font-bold">→</div>
-          <div class="md:hidden text-4xl text-blue-500 font-bold">↓</div>
-          <div class="text-center p-4 bg-blue-100 rounded shadow-inner"><span class="text-4xl">🖥️</span><h4 class="font-semibold text-blue-700 mt-2" data-i18n="validation.result.name">“液冷原生”微模块</h4><p class="text-sm text-slate-600" data-i18n="validation.result.desc">(原型机验证)</p></div>
+          <div class="text-center p-4">
+            <span class="text-4xl">💧</span>
+            <h4 class="font-semibold text-slate-700 mt-2" data-i18n="validation.partner2.name">Envicool</h4>
+            <p class="text-sm text-slate-500" data-i18n="validation.partner2.desc">(Full‑chain Cooling Core)</p>
+          </div>
+          <div class="text-4xl text-blue-500 font-bold hidden md:block">→</div>
+          <div class="text-4xl text-blue-500 font-bold md:hidden">↓</div>
+          <div class="text-center p-4 bg-blue-100 rounded-lg shadow-inner">
+            <span class="text-4xl">🖥️</span>
+            <h4 class="font-semibold text-blue-700 mt-2" data-i18n="validation.result.name">Liquid‑Native Micromodule</h4>
+            <p class="text-sm text-slate-600" data-i18n="validation.result.desc">(Prototype Verified)</p>
+          </div>
         </div>
-        <h3 class="text-xl font-semibold mb-4" data-i18n="validation.subtitle2">解决行业关键痛点的已验证技术：</h3>
-        <ul class="space-y-4">
+        <h3 class="text-xl font-semibold mb-4" data-i18n="validation.subtitle2">Verified technologies solving key pains:</h3>
+        <ul class="list-none space-y-4">
           <li class="flex items-start"><span class="text-green-500 font-bold text-2xl mr-3">✓</span>
-            <div><h4 class="font-semibold text-slate-800" data-i18n="validation.tech1.title">浮动盲插技术 (Floating Blind-Plug)</h4>
-              <p class="text-slate-600" data-i18n="validation.tech1.desc">解决液冷系统最大的可靠性风险——连接处泄漏。通过浮动设计吸收工程公差，确保连接的绝对可靠，这是解决“灾难性泄漏”痛点的核心技术。</p>
-            </div>
-          </li>
+            <div><h4 class="font-semibold text-slate-800" data-i18n="validation.tech1.title">Floating Blind‑Plug</h4>
+              <p class="text-slate-600" data-i18n="validation.tech1.desc">Absorbs tolerances and prevents leaks at connections—the #1 reliability risk.</p></div></li>
           <li class="flex items-start"><span class="text-green-500 font-bold text-2xl mr-3">✓</span>
-            <div><h4 class="font-semibold text-slate-800" data-i18n="validation.tech2.title">预制化“干作业”部署</h4>
-              <p class="text-slate-600" data-i18n="validation.tech2.desc">改变传统液冷部署模式。通过预制管路（CDU到Manifold）交付，消除数据中心内的现场焊接（动火作业），将高风险的“湿作业”转变为标准化的“干作业”组装，完美契合模块化理念。</p>
-            </div>
-          </li>
+            <div><h4 class="font-semibold text-slate-800" data-i18n="validation.tech2.title">Prefabricated Dry‑Work</h4>
+              <p class="text-slate-600" data-i18n="validation.tech2.desc">No on‑site welding in DCs; CDU→manifold prefabs turn risky wet‑work into standardized assembly.</p></div></li>
           <li class="flex items-start"><span class="text-green-500 font-bold text-2xl mr-3">✓</span>
-            <div><h4 class="font-semibold text-slate-800" data-i18n="validation.tech3.title">全链条“单一责任主体”</h4>
-              <p class="text-slate-600" data-i18n="validation.tech3.desc">基于与英维克（Envicool）的深度合作，从CDU、冷板、Manifold到液冷工质（SoluKing）均采用单一技术体系，确保所有“湿路”组件的化学兼容性，避免腐蚀或泄漏，实现“单一责任主体”保障。</p>
-            </div>
-          </li>
+            <div><h4 class="font-semibold text-slate-800" data-i18n="validation.tech3.title">Single Point of Responsibility</h4>
+              <p class="text-slate-600" data-i18n="validation.tech3.desc">One chemistry‑compatible stack—CDU, cold plates, manifolds, coolant—via Envicool ecosystem.</p></div></li>
         </ul>
       </div>
     </section>
 
-    <!-- Strategy (TropicAI) -->
+    <!-- Strategy: TropicAI -->
     <section id="strategy" class="mb-16 scroll-mt-header">
-      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="strategy.title">战略课题：Project "TropicAI"</h2>
-      <p class="text-lg text-slate-700 mb-6" data-i18n="strategy.p1">我们的硬件基础（如原型机所示）是坚实的，但这只是入场券。真正的胜利在于“群体智能”。市场分析表明，现有方案（如HDS）精于“设备级”优化，而全球领导者（如施耐德）则已转向“系统级”AIOps。这暴露了一个巨大的技术真空：如何让成百上千的分布式边缘节点（“舰队”）高效、自主地运行？</p>
-      <p class="text-lg text-slate-700 mb-8" data-i18n="strategy.p2">Project "TropicAI" 就是我们的答案。这是一个硬件无关（hardware-agnostic）的AIOps软件平台，旨在成为AI边缘计算的“智能大脑”。该课题完美契合新加坡的深度科技、先进制造与可持续发展战略，是我们真正的“软件护城河”。</p>
+      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="strategy.title">Strategic Thesis: Project "TropicAI"</h2>
+      <p class="text-lg text-slate-700 mb-8" data-i18n="strategy.p1">Hardware is the ticket. The win is fleet intelligence. Local players optimize at device‑level; global leaders move to system‑level AIOps. The gap: making hundreds/thousands of edge nodes autonomous and efficient.</p>
+      <p class="text-lg text-slate-700 mb-8" data-i18n="strategy.p2">TropicAI is a hardware‑agnostic AIOps platform—the intelligent brain for AI edge. Aligns with Singapore Deep Tech / Advanced Mfg / Sustainability strategies.</p>
 
-      <div class="bg-white p-6 rounded-lg shadow mb-12 overflow-x-auto">
-        <h3 class="text-xl font-semibold text-center mb-6" data-i18n="strategy.table.title">技术代差分析：从“设备”到“舰队”</h3>
+      <div class="bg-white p-6 rounded-lg shadow-lg mb-12 overflow-x-auto">
+        <h3 class="text-xl font-semibold text-center mb-6" data-i18n="strategy.table.title">Technology Gap: Device → Fleet</h3>
         <table class="data-table">
           <thead>
             <tr>
-              <th data-i18n="strategy.table.th1">技术维度</th>
-              <th data-i18n="strategy.table.th2">本土硬件方案 (如 HDS)</th>
-              <th data-i18n="strategy.table.th3">全球领导者 (如 施耐德)</th>
-              <th data-i18n="strategy.table.th4">Project "TropicAI" (我们的目标)</th>
+              <th data-i18n="strategy.table.th1">Dimension</th>
+              <th data-i18n="strategy.table.th2">Local HW (e.g., HDS)</th>
+              <th data-i18n="strategy.table.th3">Global Leader (e.g., Schneider)</th>
+              <th data-i18n="strategy.table.th4">TropicAI (Target)</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td data-i18n="strategy.table.r1c1">核心能力</td>
-              <td data-i18n="strategy.table.r1c2">硬件集成 (All-in-One)</td>
-              <td data-i18n="strategy.table.r1c3">企业级DCIM平台</td>
-              <td data-i18n="strategy.table.r1c4">硬件解耦的AIOps平台</td>
-            </tr>
-            <tr>
-              <td data-i18n="strategy.table.r2c1">优化层级</td>
-              <td data-i18n="strategy.table.r2c2">“设备级”智能 (单体高效)</td>
-              <td data-i18n="strategy.table.r2c3">“系统级”智能 (数据中心级)</td>
-              <td data-i18n="strategy.table.r2c4">“舰队级”智能 (分布式集群)</td>
-            </tr>
-            <tr>
-              <td data-i18n="strategy.table.r3c1">关键技术</td>
-              <td data-i18n="strategy.table.r3c2">本地参数自动化</td>
-              <td data-i18n="strategy.table.r3c3">数字孪生 (3D气流)</td>
-              <td data-i18n="strategy.table.r3c4">热力学数字孪生 + 跨站点PUE/WUE优化 + 预测性维护</td>
-            </tr>
-            <tr>
-              <td data-i18n="strategy.table.r4c1">商业模式</td>
-              <td data-i18n="strategy.table.r4c2">卖硬件产品</td>
-              <td data-i18n="strategy.table.r4c3">卖软件授权 (EcoStruxure)</td>
-              <td data-i18n="strategy.table.r4c4">硬件赋能的SaaS (高利润)</td>
-            </tr>
+            <tr><td data-i18n="strategy.table.r1c1">Core Capability</td><td data-i18n="strategy.table.r1c2">All‑in‑One HW Integration</td><td data-i18n="strategy.table.r1c3">Enterprise DCIM</td><td data-i18n="strategy.table.r1c4">HW‑agnostic AIOps</td></tr>
+            <tr><td data-i18n="strategy.table.r2c1">Optimization Level</td><td data-i18n="strategy.table.r2c2">Device‑level</td><td data-i18n="strategy.table.r2c3">System‑level</td><td data-i18n="strategy.table.r2c4">Fleet‑level</td></tr>
+            <tr><td data-i18n="strategy.table.r3c1">Key Tech</td><td data-i18n="strategy.table.r3c2">Local parameter automation</td><td data-i18n="strategy.table.r3c3">3D airflow digital twin</td><td data-i18n="strategy.table.r3c4">Thermal twin + Cross‑site PUE/WUE + Predictive maintenance</td></tr>
+            <tr><td data-i18n="strategy.table.r4c1">Business Model</td><td data-i18n="strategy.table.r4c2">Sell hardware</td><td data-i18n="strategy.table.r4c3">License software (EcoStruxure)</td><td data-i18n="strategy.table.r4c4">Hardware‑enabled SaaS</td></tr>
           </tbody>
         </table>
       </div>
 
-      <h3 class="text-2xl font-semibold text-center mb-8" data-i18n="strategy.modules.title">"Project 'TropicAI'" 关键研发模块</h3>
+      <h3 class="text-2xl font-semibold text-center mb-8" data-i18n="strategy.modules.title">TropicAI: 3 Key R&D Modules</h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow text-center transition-transform hover:scale-105">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:scale-105 transition-transform">
           <span class="text-5xl mb-4 block">🧊</span>
-          <h3 class="text-xl font-semibold" data-i18n="strategy.module1.title">模块一：热力学数字孪生</h3>
-          <p class="text-slate-600 text-sm" data-i18n="strategy.module1.desc">开发高保真热力学模型，能精确模拟AI负载在新加坡高温高湿环境下的热量传递。支持“假设分析”，在部署新服务器前即预测其对热点和PUE的影响。</p>
+          <h3 class="text-xl font-semibold" data-i18n="strategy.module1.title">Thermal Digital Twin</h3>
+          <p class="text-slate-600 text-sm" data-i18n="strategy.module1.desc">High‑fidelity heat‑transfer models for SG hot‑humid ambient; run what‑if before deployment to predict hotspots & PUE impact.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow text-center transition-transform hover:scale-105">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:scale-105 transition-transform">
           <span class="text-5xl mb-4 block">🤖</span>
-          <h3 class="text-xl font-semibold" data-i18n="strategy.module2.title">模块二：AI跨站点PUE/WUE优化</h3>
-          <p class="text-slate-600 text-sm" data-i18n="strategy.module2.desc">基于数字孪生，开发强化学习算法，实现对分布式“舰队”的全局能耗（PUE）和水资源效率（WUE）协同优化，实现全天候自主节能运行。</p>
+          <h3 class="text-xl font-semibold" data-i18n="strategy.module2.title">AI PUE/WUE Optimization</h3>
+          <p class="text-slate-600 text-sm" data-i18n="strategy.module2.desc">Reinforcement learning on the twin to coordinate energy & water efficiency across the fleet for 24/7 autonomous savings.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow text-center transition-transform hover:scale-105">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:scale-105 transition-transform">
           <span class="text-5xl mb-4 block">📡</span>
-          <h3 class="text-xl font-semibold" data-i18n="strategy.module3.title">模块三：基于传感器融合的预测性维护</h3>
-          <p class="text-slate-600 text-sm" data-i18n="strategy.module3.desc">融合多源传感器数据（振动、压力、流速等），预测水泵、风扇、快换接头等关键组件的剩余寿命(RUL)，将运维模式从“被动响应”转变为“主动干预”。</p>
+          <h3 class="text-xl font-semibold" data-i18n="strategy.module3.title">Sensor‑Fusion Predictive Maintenance</h3>
+          <p class="text-slate-600 text-sm" data-i18n="strategy.module3.desc">Fuse vibration/pressure/flow to estimate RUL of pumps/fans/quick‑connects; shift from reactive to proactive ops.</p>
         </div>
       </div>
     </section>
+
     <!-- SG Gov / VC Summary -->
     <section id="sgvc" class="mb-16 scroll-mt-header">
-      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="sgvc.title">新加坡政府视角 / VC 总结</h2>
-      <p class="text-lg text-slate-700 mb-4" data-i18n="sgvc.p1">本页以政府与机构投资者视角，概括项目的公共价值、产业带动、合规治理与资本效率，便于快速评审与路演对接。</p>
+      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="sgvc.title">Singapore Government / VC Summary</h2>
+      <p class="text-lg text-slate-700 mb-6" data-i18n="sgvc.p1">This page frames the project for government & institutional investors—public value, industry uplift, compliance/governance & capital efficiency—for fast evaluation and roadshows.</p>
+
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-white p-5 rounded-lg shadow">
-          <h3 class="text-xl font-semibold text-slate-800 mb-2" data-i18n="sgvc.card1.title">国家战略契合</h3>
-          <p class="text-slate-600 text-sm" data-i18n="sgvc.card1.desc">呼应新加坡深科、先进制造与绿色转型：数据中心能效（PUE/WUE）、本地化高端制造、软件出海。</p>
-        </div>
-        <div class="bg-white p-5 rounded-lg shadow">
-          <h3 class="text-xl font-semibold text-slate-800 mb-2" data-i18n="sgvc.card2.title">经济与就业拉动</h3>
-          <p class="text-slate-600 text-sm" data-i18n="sgvc.card2.desc">3年内在新加坡形成年均千万级产值；直接/间接创造高技能岗位（热流工程、嵌入式、AI/运维）。</p>
-        </div>
-        <div class="bg-white p-5 rounded-lg shadow">
-          <h3 class="text-xl font-semibold text-slate-800 mb-2" data-i18n="sgvc.card3.title">合规与治理</h3>
-          <p class="text-slate-600 text-sm" data-i18n="sgvc.card3.desc">本地法人与数据治理；供应链可追溯；环境与安全标准（无动火部署、冷却剂合规）。</p>
-        </div>
+        <div class="bg-white p-5 rounded-lg shadow"><h3 class="text-xl font-semibold mb-2" data-i18n="sgvc.card1.title">Alignment with National Strategies</h3><p class="text-slate-600 text-sm" data-i18n="sgvc.card1.desc">Deep Tech · Advanced Manufacturing · Green Transition: PUE/WUE, local high‑end manufacturing, software exports.</p></div>
+        <div class="bg-white p-5 rounded-lg shadow"><h3 class="text-xl font-semibold mb-2" data-i18n="sgvc.card2.title">Economic & Jobs Impact</h3><p class="text-slate-600 text-sm" data-i18n="sgvc.card2.desc">3‑year multi‑million output in SG; create high‑skill roles (thermal, embedded, AI/ops).</p></div>
+        <div class="bg-white p-5 rounded-lg shadow"><h3 class="text-xl font-semibold mb-2" data-i18n="sgvc.card3.title">Compliance & Governance</h3><p class="text-slate-600 text-sm" data-i18n="sgvc.card3.desc">Local entity & data governance; traceable supply chain; no hot‑work deployment; compliant coolants.</p></div>
       </div>
 
       <div class="bg-white p-6 rounded-lg shadow mb-8 overflow-x-auto">
-        <h3 class="text-xl font-semibold text-center mb-4" data-i18n="sgvc.askgive.title">政策/资本合作 — Ask & Give</h3>
+        <h3 class="text-xl font-semibold text-center mb-4" data-i18n="sgvc.askgive.title">Policy/Capital Partnership — Ask & Give</h3>
         <table class="data-table">
-          <thead>
-            <tr>
-              <th data-i18n="sgvc.ask">我们请求 (Ask)</th>
-              <th data-i18n="sgvc.give">我们承诺 (Give)</th>
-            </tr>
-          </thead>
+          <thead><tr><th data-i18n="sgvc.ask">Ask</th><th data-i18n="sgvc.give">Give</th></tr></thead>
           <tbody>
-            <tr>
-              <td data-i18n="sgvc.r1.ask">EDB/EnterpriseSG 联合资助：原型与试点（TRL 6→8），以及海外商业化桥接</td>
-              <td data-i18n="sgvc.r1.give">在新加坡完成关键研发与试产，IP 归属新加坡实体，公开中立标准接口</td>
-            </tr>
-            <tr>
-              <td data-i18n="sgvc.r2.ask">SEEDS Capital / 合作基金共同投资与市场开拓支持</td>
-              <td data-i18n="sgvc.r2.give">建立本地产业链：高校/研究院+本地SME配套，输出高附加值岗位</td>
-            </tr>
-            <tr>
-              <td data-i18n="sgvc.r3.ask">试点场景接入：与政府/GLC 数据中心进行 PUE/WUE 示范</td>
-              <td data-i18n="sgvc.r3.give">提供可审计的节能与减排报表，形成可复制的绿色数据中心方案</td>
-            </tr>
+            <tr><td data-i18n="sgvc.r1.ask">EDB/EnterpriseSG co‑funding: prototype & pilots (TRL 6→8) + internationalisation bridge</td><td data-i18n="sgvc.r1.give">Key R&D & pilots in SG; IP held by SG entity; open/neutral interfaces</td></tr>
+            <tr><td data-i18n="sgvc.r2.ask">SEEDS Capital / co‑investment & GTM support</td><td data-i18n="sgvc.r2.give">Build local value chain: academia + SG SMEs; deliver high‑value jobs</td></tr>
+            <tr><td data-i18n="sgvc.r3.ask">Pilot access with Gov/GLC DCs for PUE/WUE showcases</td><td data-i18n="sgvc.r3.give">Auditable energy/water‑saving reports; replicable green‑DC blueprint</td></tr>
           </tbody>
         </table>
       </div>
 
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-xl font-semibold text-center mb-6" data-i18n="sgvc.kpi.title">12–24 个月里程碑与 KPI</h3>
+      <div class="bg-white p-6 rounded-lg shadow mb-8">
+        <h3 class="text-xl font-semibold text-center mb-6" data-i18n="sgvc.kpi.title">12–24 Month KPIs</h3>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div class="p-4 rounded-lg border text-center">
-            <div class="text-3xl font-bold text-blue-700" data-i18n="sgvc.kpi.1v">≥ 15%</div>
-            <p class="text-sm text-slate-600" data-i18n="sgvc.kpi.1t">示范站点全年能耗下降（PUE 基线对比）</p>
-          </div>
-          <div class="p-4 rounded-lg border text-center">
-            <div class="text-3xl font-bold text-blue-700" data-i18n="sgvc.kpi.2v">≥ 25%</div>
-            <p class="text-sm text-slate-600" data-i18n="sgvc.kpi.2t">WUE 优化（液冷系统用水强度）</p>
-          </div>
-          <div class="p-4 rounded-lg border text-center">
-            <div class="text-3xl font-bold text-blue-700" data-i18n="sgvc.kpi.3v">3 试点</div>
-            <p class="text-sm text-slate-600" data-i18n="sgvc.kpi.3t">本地与区域示范（Gov/GLC/Enterprise 各1）</p>
-          </div>
-          <div class="p-4 rounded-lg border text-center">
-            <div class="text-3xl font-bold text-blue-700" data-i18n="sgvc.kpi.4v">IP × 3</div>
-            <p class="text-sm text-slate-600" data-i18n="sgvc.kpi.4t">核心专利/软件著作权（数字孪生、AIOps、传感融合）</p>
-          </div>
+          <div class="p-4 rounded-lg border text-center"><div class="text-3xl font-bold text-blue-700" data-i18n="sgvc.kpi.1v">≥ 15%</div><p class="text-sm text-slate-600" data-i18n="sgvc.kpi.1t">Annual energy reduction vs. PUE baseline</p></div>
+          <div class="p-4 rounded-lg border text-center"><div class="text-3xl font-bold text-blue-700" data-i18n="sgvc.kpi.2v">≥ 25%</div><p class="text-sm text-slate-600" data-i18n="sgvc.kpi.2t">WUE improvement</p></div>
+          <div class="p-4 rounded-lg border text-center"><div class="text-3xl font-bold text-blue-700" data-i18n="sgvc.kpi.3v">3 pilots</div><p class="text-sm text-slate-600" data-i18n="sgvc.kpi.3t">Local/regional showcases (Gov/GLC/Enterprise)</p></div>
+          <div class="p-4 rounded-lg border text-center"><div class="text-3xl font-bold text-blue-700" data-i18n="sgvc.kpi.4v">IP × 3</div><p class="text-sm text-slate-600" data-i18n="sgvc.kpi.4t">Core patents/software (twin, AIOps, sensor fusion)</p></div>
         </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow">
+        <h3 class="text-xl font-semibold text-center mb-4" data-i18n="pue.title">PUE vs Energy Saving (Dual‑Axis)</h3>
+        <div class="chart-container"><canvas id="pueChart" aria-label="Dual-axis PUE chart"></canvas></div>
+        <p class="text-center text-slate-600 mt-4" data-i18n="pue.caption">Baseline: air‑cooling PUE 1.6 → Alpha 1.15 (≈−28% power usage, ≈20% net saving).</p>
       </div>
     </section>
 
     <!-- Team -->
     <section id="team" class="mb-16 scroll-mt-header">
-      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="team.title">核心团队与合作伙伴</h2>
-      <p class="text-lg text-slate-700 mb-8" data-i18n="team.p1">我们的成功依赖于一支世界级的团队，结合了深度的硬件制造经验、顶尖的智能化工程能力和强大的产业生态伙伴。</p>
+      <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2" data-i18n="team.title">Core Team & Partners</h2>
+      <p class="text-lg text-slate-700 mb-8" data-i18n="team.p1">A world‑class team combining cabinet manufacturing, intelligent engineering, and ecosystem partners.</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow text-center transition-transform hover:scale-105">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:scale-105 transition-transform">
           <span class="text-5xl mb-4 block">👨‍💼</span>
-          <h3 class="text-xl font-semibold" data-i18n="team.member1.name">项目CEO</h3>
-          <p class="text-blue-600 font-medium mb-2" data-i18n="team.member1.title">新加坡公司CEO</p>
-          <p class="text-slate-600 text-sm" data-i18n-html="team.member1.desc"><strong class='text-slate-700'>（华电晨光）</strong>总经理。拥有丰富的模块化数据中心制造经验和全球供应链管理能力，是“China + 1”战略的完美执行者。</p>
-          <p class="text-xs text-slate-400 mt-4" data-i18n="team.member1.proof">经验验证：华电微模块数据中心检测报告</p>
+          <h3 class="text-xl font-semibold" data-i18n="team.member1.name">Project CEO</h3>
+          <p class="text-blue-600 font-medium mb-2" data-i18n="team.member1.title">CEO, Singapore</p>
+          <p class="text-slate-600 text-sm" data-i18n-html="team.member1.desc">GM from China’s largest cabinet maker <strong class='text-slate-700'>(Huadian Chenguang)</strong>. Expert in modular DC manufacturing & global supply chain (perfect for "China + 1").</p>
+          <p class="text-xs text-slate-400 mt-4" data-i18n="team.member1.proof">Proof: Huadian micro‑module test report</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow text-center transition-transform hover:scale-105">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:scale-105 transition-transform">
           <span class="text-5xl mb-4 block">👨‍🏫</span>
-          <h3 class="text-xl font-semibold" data-i18n="team.member2.name">李林 教授</h3>
-          <p class="text-blue-600 font-medium mb-2" data-i18n="team.member2.title">智能化总顾问</p>
-          <p class="text-slate-600 text-sm" data-i18n-html="team.member2.desc">40年经验的智能化工程专家，博士生导师。曾任<strong class='text-slate-700'>中央电视台新台址、北京中国尊</strong>等国家级大型项目智能化总顾问。为本项目的“软件护城河”提供顶层设计。</p>
-          <p class="text-xs text-slate-400 mt-4" data-i18n="team.member2.proof">经验验证：个人简历 & AI算力中心专利</p>
+          <h3 class="text-xl font-semibold" data-i18n="team.member2.name">Prof. Li Lin</h3>
+          <p class="text-blue-600 font-medium mb-2" data-i18n="team.member2.title">Chief Intelligence Advisor</p>
+          <p class="text-slate-600 text-sm" data-i18n-html="team.member2.desc">40‑year veteran; chief advisor for national landmarks (<strong class='text-slate-700'>CCTV HQ, China Zun</strong>). Provides top‑level design for our software moat.</p>
+          <p class="text-xs text-slate-400 mt-4" data-i18n="team.member2.proof">Proof: CV & AI computing center patent</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow text-center transition-transform hover:scale-105">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:scale-105 transition-transform">
           <span class="text-5xl mb-4 block">🤝</span>
-          <h3 class="text-xl font-semibold" data-i18n="team.member3.name">战略合作伙伴</h3>
-          <p class="text-blue-600 font-medium mb-2" data-i18n="team.member3.title">产业生态</p>
-          <p class="text-slate-600 text-sm" data-i18n-html="team.member3.desc"><strong class='text-slate-700'>XFusion (超聚变)</strong>: 全球领先的算力基础设施提供商。<br/><strong class='text-slate-700'>英维克 (Envicool)</strong>: 液冷部件第一品牌，提供全链条“Coolinside”液冷核心技术支持。</p>
-          <p class="text-xs text-slate-400 mt-4" data-i18n="team.member3.proof">经验验证：原型机集成方案</p>
+          <h3 class="text-xl font-semibold" data-i18n="team.member3.name">Strategic Partners</h3>
+          <p class="text-blue-600 font-medium mb-2" data-i18n="team.member3.title">Industry Ecosystem</p>
+          <p class="text-slate-600 text-sm" data-i18n-html="team.member3.desc"><strong class='text-slate-700'>XFusion</strong>: leading compute infra provider.<br/><strong class='text-slate-700'>Envicool</strong>: #1 liquid‑cooling components with full‑chain "Coolinside" tech.</p>
+          <p class="text-xs text-slate-400 mt-4" data-i18n="team.member3.proof">Proof: Prototype integration plan</p>
         </div>
       </div>
     </section>
+
   </main>
 
+  <!-- Footer -->
   <footer class="bg-slate-800 text-slate-300 mt-16">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
-      <p data-i18n="footer.copy">&copy; 2025 热阿尔法计划。保留所有权利。</p>
-      <p class="text-sm text-slate-400 mt-2" data-i18n="footer.tagline">为下一代人工智能计算打造智能热管理解决方案</p>
+      <p data-i18n="footer.copy">© 2025 Project Alpha. All rights reserved.</p>
+      <p class="text-sm text-slate-400 mt-2" data-i18n="footer.tagline">Building intelligent thermal management for next‑generation AI computing</p>
     </div>
   </footer>
 
-  <!-- Language Switcher -->
-  <div id="langSwitcher" class="fixed bottom-6 right-6 z-50 bg-white/95 backdrop-blur shadow-lg rounded-full p-1 flex items-center space-x-1 border">
-    <button class="lang-btn px-4 py-2 rounded-full text-sm font-semibold" data-lang="zh" aria-pressed="true">中</button>
-    <button class="lang-btn px-4 py-2 rounded-full text-sm font-semibold" data-lang="en" aria-pressed="false">EN</button>
+  <!-- Floating Language Switcher (always default EN) -->
+  <div id="langSwitcher" class="fixed bottom-6 right-6 z-50 bg-white shadow-lg rounded-full p-1 flex items-center space-x-1 border">
+    <button data-lang="en" class="lang-btn px-4 py-2 rounded-full text-sm font-semibold transition-all active" aria-pressed="true">EN</button>
+    <button data-lang="zh" class="lang-btn px-4 py-2 rounded-full text-sm font-semibold transition-all" aria-pressed="false">中</button>
   </div>
 
+  <!-- Charts & I18N Script (default EN; manual switch only) -->
   <script>
-    // i18n dictionary
     const I18N = {
-      zh: {
-        'meta.pageTitle': '热阿尔法计划 | 智能热管理解决方案',
-        'header.brand': '热阿尔法计划',
-        'nav.open': '打开主菜单',
-        'nav.overview': '项目概览',
-        'nav.market': '市场痛点',
-        'nav.solution': '解决方案',
-        'nav.validation': '项目验证',
-        'nav.strategy': '战略课题',
-        'nav.team': '团队与伙伴',
-        'nav.sgvc': '政府/VC总结',
-        'overview.title': '项目概览：战略交汇点',
-        'overview.p1': '“热阿尔法计划”诞生于一个关键的历史交汇点。本项目旨在利用三大不可逆转的市场力量，在新加坡的创新土壤上，为全球AI基础设施打造下一代智能热管理的核心技术与领导企业。',
-        'overview.force1.title': 'AI散热危机',
-        'overview.force1.desc': 'AI机柜功率超100kW，传统风冷已达物理极限。',
-        'overview.force2.title': 'PFAS禁令',
-        'overview.force2.desc': '全球即将禁用“永久化学品”冷却剂，现有高效液冷方案面临合规挑战。',
-        'overview.force3.title': '新加坡国家战略',
-        'overview.force3.desc': '巩固其全球深度科技（Deep Tech）中心地位，亟需核心技术创新。',
-        'overview.opportunity.title': '千载难逢的机遇',
-        'overview.opportunity.subtitle': '“热阿尔法计划”',
-        'overview.opportunity.desc': '打造高效、安全、合规的智能热管理解决方案。',
-        'market.title': '市场痛点与机遇',
-        'market.p1': '现有风冷技术已无法满足AI驱动的高功率密度散热需求。同时，现有液冷方案则面临着灾难性泄漏风险和环境法规（PFAS禁令）的双重挑战。市场亟需一个高效、安全且合规的颠覆性解决方案。',
-        'market.chart.title': '数据中心散热技术能力对比',
-        'market.chart.caption': '“热阿尔法计划”的智能液冷方案旨在突破100kW+机柜的散热瓶颈，同时解决可靠性与合规性问题。',
-        'solution.title': '解决方案：双轨创新',
-        'solution.p1': '我们专注于一个被行业巨头忽视的关键利基市场：集成智能传感与微流控增强技术的冷却液分配单元（CDU）系统。我们采用双轨创新路径，构建坚实的竞争壁垒。',
-        'solution.hardware.title': '硬件颠覆',
-        'solution.hardware.p1': '通过在新加坡研发制造微流控（Microfluidic）冷板，其散热效率是传统流道的3倍以上，从根本上提升热交换能力。',
-        'solution.hardware.l1': '微流控增强技术',
-        'solution.hardware.l2': '高效热交换',
-        'solution.hardware.l3': '新加坡本地研发制造',
-        'solution.software.title': '软件护城河',
-        'solution.software.p1': '通过部署专有传感器和基于AI的预测性维护平台，将硬件转变为高利润的“硬件赋能的SaaS”业务，实现从“卖产品”到“卖服务”的转变。',
-        'solution.software.l1': 'AI预测性维护',
-        'solution.software.l2': '硬件赋能的SaaS模式',
-        'solution.software.l3': '防止泄漏的智能传感',
-        'solution.software.l4': '构建专有性能数据集',
-        'validation.title': '项目验证：原型机与核心技术',
-        'validation.p1': '我们的技术路径并非空中楼阁。基于核心团队在机柜制造和液冷技术领域的深厚积累，我们已经（在VC报告时）生产出原型机，并形成了清晰的“液冷原生”机柜集成方案。这验证了我们解决行业核心痛点（如泄漏和部署复杂性）的能力。',
-        'validation.subtitle1': '核心技术集成方案',
-        'validation.partner1.name': '华电晨光',
-        'validation.partner1.desc': '(机柜与集成能力)',
-        'validation.partner2.name': '英维克 (Envicool)',
-        'validation.partner2.desc': '(全链条液冷内核)',
-        'validation.result.name': '“液冷原生”微模块',
-        'validation.result.desc': '(原型机验证)',
-        'validation.subtitle2': '解决行业关键痛点的已验证技术：',
-        'validation.tech1.title': '浮动盲插技术 (Floating Blind-Plug)',
-        'validation.tech1.desc': '解决液冷系统最大的可靠性风险——连接处泄漏。通过浮动设计吸收工程公差，确保连接的绝对可靠，这是解决“灾难性泄漏”痛点的核心技术。',
-        'validation.tech2.title': '预制化“干作业”部署',
-        'validation.tech2.desc': '改变传统液冷部署模式。通过预制管路（CDU到Manifold）交付，消除数据中心内的现场焊接（动火作业），将高风险的“湿作业”转变为标准化的“干作业”组装，完美契合模块化理念。',
-        'validation.tech3.title': '全链条“单一责任主体”',
-        'validation.tech3.desc': '基于与英维克（Envicool）的深度合作，从CDU、冷板、Manifold到液冷工质（SoluKing）均采用单一技术体系，确保所有“湿路”组件的化学兼容性，避免腐蚀或泄漏，实现“单一责任主体”保障。',
-        'strategy.title': '战略课题：Project "TropicAI"',
-        'strategy.p1': '我们的硬件基础（如原型机所示）是坚实的，但这只是入场券。真正的胜利在于“群体智能”。市场分析表明，现有方案（如HDS）精于“设备级”优化，而全球领导者（如 施耐德）则已转向“系统级”AIOps。这暴露了一个巨大的技术真空：如何让成百上千的分布式边缘节点（“舰队”）高效、自主地运行？',
-        'strategy.p2': 'Project "TropicAI" 就是我们的答案。这是一个硬件无关（hardware-agnostic）的AIOps软件平台，旨在成为AI边缘计算的“智能大脑”。该课题完美契合新加坡的深度科技、先进制造与可持续发展战略，是我们真正的“软件护城河”。',
-        'strategy.table.title': '技术代差分析：从“设备”到“舰队”',
-        'strategy.table.th1': '技术维度',
-        'strategy.table.th2': '本土硬件方案 (如 HDS)',
-        'strategy.table.th3': '全球领导者 (如 施耐德)',
-        'strategy.table.th4': 'Project "TropicAI" (我们的目标)',
-        'strategy.table.r1c1': '核心能力',
-        'strategy.table.r1c2': '硬件集成 (All-in-One)',
-        'strategy.table.r1c3': '企业级DCIM平台',
-        'strategy.table.r1c4': '硬件解耦的AIOps平台',
-        'strategy.table.r2c1': '优化层级',
-        'strategy.table.r2c2': '“设备级”智能 (单体高效)',
-        'strategy.table.r2c3': '“系统级”智能 (数据中心级)',
-        'strategy.table.r2c4': '“舰队级”智能 (分布式集群)',
-        'strategy.table.r3c1': '关键技术',
-        'strategy.table.r3c2': '本地参数自动化',
-        'strategy.table.r3c3': '数字孪生 (3D气流)',
-        'strategy.table.r3c4': '热力学数字孪生 + 跨站点PUE/WUE优化 + 预测性维护',
-        'strategy.table.r4c1': '商业模式',
-        'strategy.table.r4c2': '卖硬件产品',
-        'strategy.table.r4c3': '卖软件授权 (EcoStruxure)',
-        'strategy.table.r4c4': '硬件赋能的SaaS (高利润)',
-        'strategy.modules.title': '"Project \u0027TropicAI\u0027" 关键研发模块',
-        'strategy.module1.title': '模块一：热力学数字孪生',
-        'strategy.module1.desc': '开发高保真热力学模型，能精确模拟AI负载在新加坡高温高湿环境下的热量传递。支持“假设分析”，在部署新服务器前即预测其对热点和PUE的影响。',
-        'strategy.module2.title': '模块二：AI跨站点PUE/WUE优化',
-        'strategy.module2.desc': '基于数字孪生，开发强化学习算法，实现对分布式“舰队”的全局能耗（PUE）和水资源效率（WUE）协同优化，实现全天候自主节能运行。',
-        'strategy.module3.title': '模块三：基于传感器融合的预测性维护',
-        'strategy.module3.desc': '融合多源传感器数据（振动、压力、流速等），预测水泵、风扇、快换接头等关键组件的剩余寿命(RUL)，将运维模式从“被动响应”转变为“主动干预”。',
-        'team.title': '核心团队与合作伙伴',
-        'team.p1': '我们的成功依赖于一支世界级的团队，结合了深度的硬件制造经验、顶尖的智能化工程能力和强大的产业生态伙伴。',
-        'team.member1.name': '项目CEO',
-        'team.member1.title': '新加坡公司CEO',
-        'team.member1.desc': '来自中国深圳最大的机柜生产商<strong class="text-slate-700">（华电晨光）</strong>总经理。拥有丰富的模块化数据中心制造经验和全球供应链管理能力，是“China + 1”战略的完美执行者。',
-        'team.member1.proof': '经验验证：华电微模块数据中心检测报告',
-        'team.member2.name': '李林 教授',
-        'team.member2.title': '智能化总顾问',
-        'team.member2.desc': '40年经验的智能化工程专家，博士生导师。曾任<strong class="text-slate-700">中央电视台新台址、北京中国尊</strong>等国家级大型项目智能化总顾问。为本项目的“软件护城河”提供顶层设计。',
-        'team.member2.proof': '经验验证：个人简历 & AI算力中心专利',
-        'team.member3.name': '战略合作伙伴',
-        'team.member3.title': '产业生态',
-        'team.member3.desc': '<strong class="text-slate-700">XFusion (超聚变)</strong>: 全球领先的算力基础设施提供商。<br/><strong class="text-slate-700">英维克 (Envicool)</strong>: 液冷部件第一品牌，提供全链条“Coolinside”液冷核心技术支持。',
-        'team.member3.proof': '经验验证：原型机集成方案',
-        'footer.copy': '© 2025 热阿尔法计划。保留所有权利。',
-        'footer.tagline': '为下一代人工智能计算打造智能热管理解决方案',
-        'sgvc.title': '新加坡政府视角 / VC 总结',
-        'sgvc.p1': '本页以政府与机构投资者视角，概括项目的公共价值、产业带动、合规治理与资本效率，便于快速评审与路演对接。',
-        'sgvc.card1.title': '国家战略契合',
-        'sgvc.card1.desc': '呼应新加坡深科、先进制造与绿色转型：数据中心能效（PUE/WUE）、本地化高端制造、软件出海。',
-        'sgvc.card2.title': '经济与就业拉动',
-        'sgvc.card2.desc': '3年内在新加坡形成年均千万级产值；直接/间接创造高技能岗位（热流工程、嵌入式、AI/运维）。',
-        'sgvc.card3.title': '合规与治理',
-        'sgvc.card3.desc': '本地法人与数据治理；供应链可追溯；环境与安全标准（无动火部署、冷却剂合规）。',
-        'sgvc.askgive.title': '政策/资本合作 — Ask & Give',
-        'sgvc.ask': '我们请求 (Ask)',
-        'sgvc.give': '我们承诺 (Give)',
-        'sgvc.r1.ask': 'EDB/EnterpriseSG 联合资助：原型与试点（TRL 6→8），以及海外商业化桥接',
-        'sgvc.r1.give': '在新加坡完成关键研发与试产，IP 归属新加坡实体，公开中立标准接口',
-        'sgvc.r2.ask': 'SEEDS Capital / 合作基金共同投资与市场开拓支持',
-        'sgvc.r2.give': '建立本地产业链：高校/研究院+本地SME配套，输出高附加值岗位',
-        'sgvc.r3.ask': '试点场景接入：与政府/GLC 数据中心进行 PUE/WUE 示范',
-        'sgvc.r3.give': '提供可审计的节能与减排报表，形成可复制的绿色数据中心方案',
-        'sgvc.kpi.title': '12–24 个月里程碑与 KPI',
-        'sgvc.kpi.1v': '≥ 15%',
-        'sgvc.kpi.1t': '示范站点全年能耗下降（PUE 基线对比）',
-        'sgvc.kpi.2v': '≥ 25%',
-        'sgvc.kpi.2t': 'WUE 优化（液冷系统用水强度）',
-        'sgvc.kpi.3v': '3 试点',
-        'sgvc.kpi.3t': '本地与区域示范（Gov/GLC/Enterprise 各1）',
-        'sgvc.kpi.4v': 'IP × 3',
-        'sgvc.kpi.4t': '核心专利/软件著作权（数字孪生、AIOps、传感融合）',
-        // chart
-        'chart.title': '散热技术支持的单机柜功率密度',
-        'chart.ylabel': '功率 (kW)',
-        'chart.dataset': '支持的机柜功率 (kW)',
-        'chart.labels.0': '传统风冷 (Air Cooling)',
-        'chart.labels.1': '现有液冷 (Current Liquid)',
-        'chart.labels.2': '热阿尔法方案 (Project Alpha)',
-        'chart.tooltip.risk': '（面临泄漏与 PFAS 风险）',
-        'chart.tooltip.solution': '（智能·安全·合规）',
-      },
       en: {
-        'meta.pageTitle': 'Project Alpha | Intelligent Thermal Management Solution',
-        'header.brand': 'Project Alpha',
-        'nav.open': 'Open main menu',
-        'nav.overview': 'Overview',
-        'nav.market': 'Market Pain',
-        'nav.solution': 'Solution',
-        'nav.validation': 'Validation',
-        'nav.strategy': 'Strategic Thesis',
-        'nav.team': 'Team & Partners',
-        'nav.sgvc': 'SG Gov / VC Summary',
-        'overview.title': 'Overview: A Strategic Intersection',
-        'overview.p1': "Project Alpha is born at a critical historical intersection. This project aims to leverage three irreversible market forces to build the next generation of intelligent thermal management core technology and a leading enterprise for global AI infrastructure, all on Singapore's innovative soil.",
-        'overview.force1.title': 'AI Cooling Crisis',
-        'overview.force1.desc': 'AI cabinet power exceeds 100kW; traditional air cooling has reached its physical limit.',
-        'overview.force2.title': 'PFAS Ban',
-        'overview.force2.desc': "Global ban on 'forever chemical' coolants is imminent, challenging existing high-efficiency liquid cooling solutions.",
-        'overview.force3.title': "Singapore's National Strategy",
-        'overview.force3.desc': 'To solidify its status as a global Deep Tech hub, requiring core technology innovation.',
-        'overview.opportunity.title': 'A Generational Opportunity',
-        'overview.opportunity.subtitle': 'Project Alpha',
-        'overview.opportunity.desc': 'Creating an efficient, safe, and compliant intelligent thermal management solution.',
-        'market.title': 'Market Pain & Opportunity',
-        'market.p1': 'Existing air-cooling technology can no longer meet the high-density cooling demands driven by AI. Meanwhile, current liquid cooling solutions face a dual challenge of catastrophic leak risks and environmental regulations (PFAS ban). The market urgently needs a disruptive solution that is efficient, safe, and compliant.',
-        'market.chart.title': 'Data Center Cooling Technology Capability Comparison',
-        'market.chart.caption': "Project Alpha's intelligent liquid cooling solution aims to break the 100kW+ cabinet cooling bottleneck while addressing reliability and compliance issues.",
-        'solution.title': 'Solution: Dual-Track Innovation',
-        'solution.p1': 'We focus on a key niche market ignored by industry giants: a Coolant Distribution Unit (CDU) system integrated with intelligent sensing and microfluidic enhancement. We adopt a dual-track innovation path to build solid competitive barriers.',
-        'solution.hardware.title': 'Hardware Disruption',
-        'solution.hardware.p1': 'By developing and manufacturing microfluidic cold plates in Singapore, with over 3x the thermal efficiency of traditional channels, we fundamentally enhance heat exchange capacity.',
-        'solution.hardware.l1': 'Microfluidic enhancement',
-        'solution.hardware.l2': 'High-efficiency heat exchange',
-        'solution.hardware.l3': 'Local R&D and manufacturing in Singapore',
-        'solution.software.title': 'Software Moat',
-        'solution.software.p1': "By deploying proprietary sensors and an AI-based predictive maintenance platform, we transform hardware into a high-margin 'Hardware-enabled SaaS' business, shifting from 'selling products' to 'selling services'.",
-        'solution.software.l1': 'AI predictive maintenance',
-        'solution.software.l2': 'Hardware-enabled SaaS model',
-        'solution.software.l3': 'Intelligent sensing for leak prevention',
-        'solution.software.l4': 'Building a proprietary performance dataset',
-        'validation.title': 'Validation: Prototype & Core Technology',
-        'validation.p1': "Our technological path is not a fantasy. Based on the core team's deep accumulation in cabinet manufacturing and liquid cooling technology, we have already (at the time of the VC report) produced a prototype and formed a clear 'liquid-cooling native' cabinet integration plan. This validates our ability to solve core industry pain points (like leakage and deployment complexity).",
-        'validation.subtitle1': 'Core Technology Integration Plan',
-        'validation.partner1.name': 'Huadian Chenguang',
-        'validation.partner1.desc': '(Cabinet & Integration Capability)',
-        'validation.partner2.name': 'Envicool',
-        'validation.partner2.desc': '(Full-chain Liquid Cooling Core)',
-        'validation.result.name': "'Liquid-Cooling Native' Micromodule",
-        'validation.result.desc': '(Prototype Validation)',
-        'validation.subtitle2': 'Verified Technologies Solving Key Industry Pain Points:',
-        'validation.tech1.title': 'Floating Blind-Plug Technology',
-        'validation.tech1.desc': "Solves the biggest reliability risk in liquid cooling: connection leaks. The floating design absorbs engineering tolerances, ensuring absolute connection reliability—core to solving the 'catastrophic leak' pain point.",
-        'validation.tech2.title': "Prefabricated 'Dry-Work' Deployment",
-        'validation.tech2.desc': "Changes the traditional liquid cooling deployment model. By delivering prefabricated piping (CDU to Manifold), we eliminate on-site welding ('hot work') in the data center, turning high-risk 'wet work' into standardized 'dry work' assembly, perfectly fitting the modular concept.",
-        'validation.tech3.title': "Full-Chain 'Single Point of Responsibility'",
-        'validation.tech3.desc': "Based on deep collaboration with Envicool, a single technology system is used from CDU, cold plates, and Manifold to the SoluKing coolant, ensuring chemical compatibility of all 'wet path' components to prevent corrosion or leaks, achieving 'single point of responsibility' assurance.",
-        'strategy.title': 'Strategic Thesis: Project "TropicAI"',
-        'strategy.p1': "Our hardware foundation (shown by the prototype) is solid, but it's just the ticket to entry. The real victory lies in 'fleet intelligence'. Market analysis shows that current solutions (like HDS) excel at 'device-level' optimization, while global leaders (like Schneider) have moved to 'system-level' AIOps. This reveals a massive technology vacuum: How to make hundreds or thousands of distributed edge nodes (a 'fleet') operate efficiently and autonomously?",
-        'strategy.p2': "Project 'TropicAI' is our answer. It is a hardware-agnostic AIOps software platform designed to be the 'intelligent brain' for AI edge computing. This thesis perfectly aligns with Singapore's Deep Tech, Advanced Manufacturing, and Sustainability strategies, forming our true 'software moat'.",
-        'strategy.table.title': "Technology Gap Analysis: From 'Device' to 'Fleet'",
-        'strategy.table.th1': 'Dimension',
-        'strategy.table.th2': 'Local Hardware (e.g., HDS)',
-        'strategy.table.th3': 'Global Leader (e.g., Schneider)',
-        'strategy.table.th4': 'Project "TropicAI" (Our Goal)',
-        'strategy.table.r1c1': 'Core Capability',
-        'strategy.table.r1c2': 'Hardware Integration (All-in-One)',
-        'strategy.table.r1c3': 'Enterprise DCIM Platform',
-        'strategy.table.r1c4': 'Hardware-Agnostic AIOps Platform',
-        'strategy.table.r2c1': 'Optimization Level',
-        'strategy.table.r2c2': "'Device-Level' (Single unit)",
-        'strategy.table.r2c3': "'System-Level' (Data center)",
-        'strategy.table.r2c4': "'Fleet-Level' (Distributed cluster)",
-        'strategy.table.r3c1': 'Key Technology',
-        'strategy.table.r3c2': 'Local Parameter Automation',
-        'strategy.table.r3c3': 'Digital Twin (3D Airflow)',
-        'strategy.table.r3c4': 'Thermal Digital Twin + Cross-Site PUE/WUE Optimization + Predictive Maintenance',
-        'strategy.table.r4c1': 'Business Model',
-        'strategy.table.r4c2': 'Sell Hardware Products',
-        'strategy.table.r4c3': 'Sell Software Licenses (EcoStruxure)',
-        'strategy.table.r4c4': 'Hardware-Enabled SaaS (High-Margin)',
-        'strategy.modules.title': "Project 'TropicAI' – Key R&D Modules",
-        'strategy.module1.title': 'Module 1: Thermal Digital Twin',
-        'strategy.module1.desc': "Develop high-fidelity thermodynamic models to accurately simulate heat transfer for AI workloads in Singapore's hot and humid environment. Supports 'what-if' analysis to predict thermal/PUE impact before deploying new servers.",
-        'strategy.module2.title': 'Module 2: AI Cross-Site PUE/WUE Optimization',
-        'strategy.module2.desc': "Using the digital twin, develop reinforcement learning algorithms for global optimization of energy (PUE) and water (WUE) efficiency across a distributed 'fleet', enabling 24/7 autonomous energy-saving operations.",
-        'strategy.module3.title': 'Module 3: Sensor Fusion Predictive Maintenance',
-        'strategy.module3.desc': 'Fuse multi-source sensor data (vibration, pressure, flow rate, etc.) to predict the Remaining Useful Life (RUL) of critical components (pumps, fans, quick-connects), shifting operations from reactive to proactive.',
-        'team.title': 'Core Team & Partners',
-        'team.p1': 'Our success relies on a world-class team, combining deep hardware manufacturing experience
+        brand:"Project Alpha",
+        'nav.overview':'Overview','nav.market':'Market Pain','nav.solution':'Solution','nav.validation':'Validation','nav.strategy':'Strategic Thesis','nav.sgvc':'SG Gov / VC Summary','nav.team':'Team & Partners',
+        'overview.title':'Overview: A Strategic Intersection','overview.p1':'Project Alpha is born at a critical historical intersection. This project leverages three irreversible market forces—AI cooling crisis, PFAS ban, and Singapore\'s Deep Tech strategy—to build next‑gen intelligent thermal management for global AI infrastructure.',
+        'overview.force1.title':'AI Cooling Crisis','overview.force1.desc':'AI cabinet power >100kW; traditional air cooling has hit physical limits.','overview.force2.title':'PFAS Ban','overview.force2.desc':'Impending global ban on "forever chemical" coolants challenges legacy liquid cooling.','overview.force3.title':'Singapore Strategy','overview.force3.desc':'Strengthen Singapore as a global Deep Tech hub via core tech innovation.','overview.opportunity.title':'A Generational Opportunity','overview.opportunity.subtitle':'Project Alpha','overview.opportunity.desc':'Efficient, safe, and compliant intelligent thermal management.',
+        'market.title':'Market Pain & Opportunity','market.p1':'Air cooling no longer meets AI high‑density loads; liquid cooling faces leak risks and PFAS‑compliance challenges. The market needs an efficient, safe, compliant disruptor.','market.chart.mainTitle':'Data Center Cooling Technology Capability Comparison','market.chart.caption':'Alpha targets 100kW+ cabinets while addressing reliability & compliance.',
+        'solution.title':'Solution: Dual‑Track Innovation','solution.p1':'Focus on a neglected niche: a CDU system with intelligent sensing + microfluidic enhancement. Build barriers via hardware disruption + software moat.','solution.hardware.title':'Hardware Disruption','solution.hardware.p1':'Singapore‑made microfluidic cold plates deliver >3× heat‑transfer efficiency vs. legacy channels.','solution.hardware.l1':'Microfluidic enhancement','solution.hardware.l2':'High‑efficiency heat exchange','solution.hardware.l3':'Local R&D and manufacturing','solution.software.title':'Software Moat','solution.software.p1':'Proprietary sensors + AI predictive maintenance transform hardware into high‑margin Hardware‑enabled SaaS.','solution.software.l1':'AI predictive maintenance','solution.software.l2':'Hardware‑enabled SaaS','solution.software.l3':'Intelligent leak prevention','solution.software.l4':'Proprietary performance dataset',
+        'validation.title':'Validation: Prototype & Core Technology','validation.p1':'Backed by cabinet manufacturing + liquid‑cooling know‑how, we built a prototype and a "liquid‑native" integration plan, proving our ability to solve leakage & deployment complexity.','validation.subtitle1':'Core Integration','validation.partner1.name':'Huadian Chenguang','validation.partner1.desc':'(Cabinet & Integration)','validation.partner2.name':'Envicool','validation.partner2.desc':'(Full‑chain Cooling Core)','validation.result.name':'Liquid‑Native Micromodule','validation.result.desc':'(Prototype Verified)','validation.subtitle2':'Verified technologies solving key pains:','validation.tech1.title':'Floating Blind‑Plug','validation.tech1.desc':'Absorbs tolerances and prevents leaks at connections—the #1 reliability risk.','validation.tech2.title':'Prefabricated Dry‑Work','validation.tech2.desc':'No on‑site welding in DCs; CDU→manifold prefabs turn risky wet‑work into standardized assembly.','validation.tech3.title':'Single Point of Responsibility','validation.tech3.desc':'One chemistry‑compatible stack—CDU, cold plates, manifolds, coolant—via Envicool ecosystem.',
+        'strategy.title':'Strategic Thesis: Project "TropicAI"','strategy.p1':'Hardware is the ticket. The win is fleet intelligence. Local players optimize at device‑level; global leaders move to system‑level AIOps. The gap: making hundreds/thousands of edge nodes autonomous and efficient.','strategy.p2':'TropicAI is a hardware‑agnostic AIOps platform—the intelligent brain for AI edge. Aligns with Singapore Deep Tech / Advanced Mfg / Sustainability strategies.','strategy.table.title':'Technology Gap: Device → Fleet','strategy.table.th1':'Dimension','strategy.table.th2':'Local HW (e.g., HDS)','strategy.table.th3':'Global Leader (e.g., Schneider)','strategy.table.th4':'TropicAI (Target)','strategy.table.r1c1':'Core Capability','strategy.table.r1c2':'All‑in‑One HW Integration','strategy.table.r1c3':'Enterprise DCIM','strategy.table.r1c4':'HW‑agnostic AIOps','strategy.table.r2c1':'Optimization Level','strategy.table.r2c2':'Device‑level','strategy.table.r2c3':'System‑level','strategy.table.r2c4':'Fleet‑level','strategy.table.r3c1':'Key Tech','strategy.table.r3c2':'Local parameter automation','strategy.table.r3c3':'3D airflow digital twin','strategy.table.r3c4':'Thermal twin + Cross‑site PUE/WUE + Predictive maintenance','strategy.table.r4c1':'Business Model','strategy.table.r4c2':'Sell hardware','strategy.table.r4c3':'License software (EcoStruxure)','strategy.table.r4c4':'Hardware‑enabled SaaS','strategy.modules.title':'TropicAI: 3 Key R&D Modules','strategy.module1.title':'Thermal Digital Twin','strategy.module1.desc':'High‑fidelity heat‑transfer models for SG hot‑humid ambient; run what‑if before deployment to predict hotspots & PUE impact.','strategy.module2.title':'AI PUE/WUE Optimization','strategy.module2.desc':'Reinforcement learning on the twin to coordinate energy & water efficiency across the fleet for 24/7 autonomous savings.','strategy.module3.title':'Sensor‑Fusion Predictive Maintenance','strategy.module3.desc':'Fuse vibration/pressure/flow to estimate RUL of pumps/fans/quick‑connects; shift from reactive to proactive ops.',
+        'sgvc.title':'Singapore Government / VC Summary','sgvc.p1':'This page frames the project for government & institutional investors—public value, industry uplift, compliance/governance & capital efficiency—for fast evaluation and roadshows.','sgvc.card1.title':'Alignment with National Strategies','sgvc.card1.desc':'Deep Tech · Advanced Manufacturing · Green Transition: PUE/WUE, local high‑end manufacturing, software exports.','sgvc.card2.title':'Economic & Jobs Impact','sgvc.card2.desc':'3‑year multi‑million output in SG; create high‑skill roles (thermal, embedded, AI/ops).','sgvc.card3.title':'Compliance & Governance','sgvc.card3.desc':'Local entity & data governance; traceable supply chain; no hot‑work deployment; compliant coolants.','sgvc.askgive.title':'Policy/Capital Partnership — Ask & Give','sgvc.ask':'Ask','sgvc.give':'Give','sgvc.r1.ask':'EDB/EnterpriseSG co‑funding: prototype & pilots (TRL 6→8) + internationalisation bridge','sgvc.r1.give':'Key R&D & pilots in SG; IP held by SG entity; open/neutral interfaces','sgvc.r2.ask':'SEEDS Capital / co‑investment & GTM support','sgvc.r2.give':'Build local value chain: academia + SG SMEs; deliver high‑value jobs','sgvc.r3.ask':'Pilot access with Gov/GLC DCs for PUE/WUE showcases','sgvc.r3.give':'Auditable energy/water‑saving reports; replicable green‑DC blueprint','sgvc.kpi.title':'12–24 Month KPIs','sgvc.kpi.1v':'≥ 15%','sgvc.kpi.1t':'Annual energy reduction vs. PUE baseline','sgvc.kpi.2v':'≥ 25%','sgvc.kpi.2t':'WUE improvement','sgvc.kpi.3v':'3 pilots','sgvc.kpi.3t':'Local/regional showcases (Gov/GLC/Enterprise)','sgvc.kpi.4v':'IP × 3','sgvc.kpi.4t':'Core patents/software (twin, AIOps, sensor fusion)',
+        'pue.title':'PUE vs Energy Saving (Dual‑Axis)','pue.caption':'Baseline: air‑cooling PUE 1.6 → Alpha 1.15 (≈−28% power usage, ≈20% net saving).','pue.left':'PUE','pue.right':'Energy Saving (%)',
+        'team.title':'Core Team & Partners','team.p1':'A world‑class team combining cabinet manufacturing, intelligent engineering, and ecosystem partners.','team.member1.name':'Project CEO','team.member1.title':'CEO, Singapore','team.member1.desc':'GM from China’s largest cabinet maker <strong class=\'text-slate-700\'>(Huadian Chenguang)</strong>. Expert in modular DC manufacturing & global supply chain (perfect for "China + 1").','team.member1.proof':'Proof: Huadian micro‑module test report','team.member2.name':'Prof. Li Lin','team.member2.title':'Chief Intelligence Advisor','team.member2.desc':'40‑year veteran; chief advisor for national landmarks (<strong class=\'text-slate-700\'>CCTV HQ, China Zun</strong>). Provides top‑level design for our software moat.','team.member2.proof':'Proof: CV & AI computing center patent','team.member3.name':'Strategic Partners','team.member3.title':'Industry Ecosystem','team.member3.desc':'<strong class=\'text-slate-700\'>XFusion</strong>: leading compute infra provider.<br/><strong class=\'text-slate-700\'>Envicool</strong>: #1 liquid‑cooling components with full‑chain "Coolinside" tech.','team.member3.proof':'Proof: Prototype integration plan',
+        'footer.copy':'© 2025 Project Alpha. All rights reserved.','footer.tagline':'Building intelligent thermal management for next‑generation AI computing',
+        // charts
+        'chart.labels.0':'Traditional Air Cooling','chart.labels.1':'Current Liquid Cooling','chart.labels.2':'Project Alpha','chart.dataset':'Supported Cabinet Power (kW)','chart.ylabel':'Power (kW)','improve.label':'Improvement (%)'
+      },
+      zh: {
+        brand:"热阿尔法计划",
+        'nav.overview':'项目概览','nav.market':'市场痛点','nav.solution':'解决方案','nav.validation':'项目验证','nav.strategy':'战略课题','nav.sgvc':'政府/VC总结','nav.team':'团队与伙伴',
+        'overview.title':'项目概览：战略交汇点','overview.p1':'“热阿尔法计划”诞生于关键历史交汇点：AI散热危机、PFAS禁令与新加坡深科战略三股力量叠加，面向全球AI基础设施打造下一代智能热管理。','overview.force1.title':'AI散热危机','overview.force1.desc':'AI机柜功率超100kW，传统风冷已达物理极限。','overview.force2.title':'PFAS禁令','overview.force2.desc':'“永久化学品”冷却剂面临全球禁用，传统液冷合规承压。','overview.force3.title':'新加坡国家战略','overview.force3.desc':'以核心技术创新巩固深度科技中心地位。','overview.opportunity.title':'千载难逢的机遇','overview.opportunity.subtitle':'“热阿尔法计划”','overview.opportunity.desc':'打造高效、安全、合规的智能热管理解决方案。',
+        'market.title':'市场痛点与机遇','market.p1':'风冷无法满足AI高密度散热；液冷又面临灾难性泄漏与PFAS合规挑战。市场急需兼顾效率/安全/合规的新方案。','market.chart.mainTitle':'数据中心散热技术能力对比','market.chart.caption':'Alpha 方案瞄准 100kW+ 机柜，并同时解决可靠性与合规问题。',
+        'solution.title':'解决方案：双轨创新','solution.p1':'聚焦“智能传感 + 微流控增强”的 CDU 利基，硬件颠覆 + 软件护城河双轮驱动。','solution.hardware.title':'硬件颠覆','solution.hardware.p1':'本地研发制造的微流控冷板，相比传统流道效率提升 3×+。','solution.hardware.l1':'微流控增强','solution.hardware.l2':'高效热交换','solution.hardware.l3':'新加坡本地研发制造','solution.software.title':'软件护城河','solution.software.p1':'自研传感 + AI 预测性维护，把硬件转化为高利润的“硬件赋能SaaS”。','solution.software.l1':'AI 预测性维护','solution.software.l2':'硬件赋能 SaaS','solution.software.l3':'智能防泄漏','solution.software.l4':'专有性能数据集',
+        'validation.title':'项目验证：原型机与核心技术','validation.p1':'依托机柜与液冷积累，已完成原型与“液冷原生”集成方案验证，解决泄漏与部署复杂度。','validation.subtitle1':'核心技术集成','validation.partner1.name':'华电晨光','validation.partner1.desc':'（机柜与集成能力）','validation.partner2.name':'英维克 (Envicool)','validation.partner2.desc':'（全链条液冷内核）','validation.result.name':'“液冷原生”微模块','validation.result.desc':'（原型机验证）','validation.subtitle2':'解决关键痛点的已验证技术：','validation.tech1.title':'浮动盲插技术','validation.tech1.desc':'吸收公差，提升连接可靠性，避免泄漏。','validation.tech2.title':'预制“干作业”部署','validation.tech2.desc':'CDU→Manifold 预制，消除数据中心内动火焊接。','validation.tech3.title':'单一责任主体','validation.tech3.desc':'CDU/冷板/歧管/工质同一技术体系，化学兼容性可追溯。',
+        'strategy.title':'战略课题：Project “TropicAI”','strategy.p1':'硬件是入场券，胜负在“舰队智能”。本地擅长设备级优化，全球龙头已转向系统级 AIOps；缺口是让海量边缘节点自治高效。','strategy.p2':'TropicAI = 硬件无关 AIOps 平台，成为 AI 边缘的智能大脑；契合新加坡深科/先进制造/可持续战略。','strategy.table.title':'技术代差：从“设备”到“舰队”','strategy.table.th1':'技术维度','strategy.table.th2':'本土硬件（如 HDS）','strategy.table.th3':'全球领导者（如 施耐德）','strategy.table.th4':'TropicAI（目标）','strategy.table.r1c1':'核心能力','strategy.table.r1c2':'一体化硬件集成','strategy.table.r1c3':'企业级 DCIM','strategy.table.r1c4':'硬件解耦的 AIOps','strategy.table.r2c1':'优化层级','strategy.table.r2c2':'设备级','strategy.table.r2c3':'系统级','strategy.table.r2c4':'舰队级','strategy.table.r3c1':'关键技术','strategy.table.r3c2':'本地参数自动化','strategy.table.r3c3':'3D 气流数字孪生','strategy.table.r3c4':'热学孪生 + 跨站点 PUE/WUE + 预测性维护','strategy.table.r4c1':'商业模式','strategy.table.r4c2':'卖硬件','strategy.table.r4c3':'软件授权（EcoStruxure）','strategy.table.r4c4':'硬件赋能 SaaS','strategy.modules.title':'TropicAI 三大研发模块','strategy.module1.title':'热力学数字孪生','strategy.module1.desc':'面向新加坡高温高湿环境的高保真热传模型；部署前“假设分析”。','strategy.module2.title':'AI 跨站点 PUE/WUE 优化','strategy.module2.desc':'基于孪生的强化学习，实现“舰队”级能水协同优化与自治。','strategy.module3.title':'传感器融合预测性维护','strategy.module3.desc':'融合振动/压力/流速等，估计泵/风扇/快换接头 RUL，前移维护。',
+        'sgvc.title':'新加坡政府 / VC 总结','sgvc.p1':'从公共价值、产业带动、合规治理与资本效率角度呈现项目，便于快速评审与路演。','sgvc.card1.title':'国家战略契合','sgvc.card1.desc':'深科 · 先进制造 · 绿色转型：PUE/WUE、本地高端制造、软件出海。','sgvc.card2.title':'经济与就业拉动','sgvc.card2.desc':'3 年内在新加坡形成千万级年产值，创造高技能岗位。','sgvc.card3.title':'合规与治理','sgvc.card3.desc':'本地法人与数据治理；供应链可追溯；无动火部署；冷却剂合规。','sgvc.askgive.title':'政策/资本合作 — Ask & Give','sgvc.ask':'我们请求 (Ask)','sgvc.give':'我们承诺 (Give)','sgvc.r1.ask':'EDB/EnterpriseSG 联合资助：原型与试点（TRL 6→8）+ 出海桥接','sgvc.r1.give':'关键研发与试产在新加坡；IP 归属本地实体；接口中立开放','sgvc.r2.ask':'SEEDS Capital / 合作基金共同投资与市场拓展','sgvc.r2.give':'构建本地产业链：高校+本地 SME，输出高价值岗位','sgvc.r3.ask':'接入 Gov/GLC 数据中心试点，展示 PUE/WUE 成果','sgvc.r3.give':'提供可审计节能/节水报告，沉淀可复制模板','sgvc.kpi.title':'12–24 个月里程碑与 KPI','sgvc.kpi.1v':'≥ 15%','sgvc.kpi.1t':'示范站点年度能耗降低（PUE 基线对比）','sgvc.kpi.2v':'≥ 25%','sgvc.kpi.2t':'WUE 改善','sgvc.kpi.3v':'3 试点','sgvc.kpi.3t':'本地与区域示范（Gov/GLC/Enterprise）','sgvc.kpi.4v':'IP × 3','sgvc.kpi.4t':'核心专利/软件著作权（孪生、AIOps、传感融合）',
+        'pue.title':'PUE 与节能率（双轴）','pue.caption':'基线：风冷 PUE 1.6 → Alpha 1.15（≈‑28% 功率，≈20% 净节能）。','pue.left':'PUE','pue.right':'节能率 (%)',
+        'team.title':'核心团队与合作伙伴','team.p1':'结合机柜制造、智能化工程与生态伙伴的世界级团队。','team.member1.name':'项目 CEO','team.member1.title':'新加坡 CEO','team.member1.desc':'来自中国最大机柜厂 <strong class=\'text-slate-700\'>（华电晨光）</strong> 的总经理；模块化 DC 与全球供应链专家（“China+1”执行力）。','team.member1.proof':'验证：华电微模块检测报告','team.member2.name':'李林 教授','team.member2.title':'智能化总顾问','team.member2.desc':'40 年资深专家，曾任 <strong class=\'text-slate-700\'>央视新台址、中国尊</strong> 智能化总顾问；为“软件护城河”提供顶层设计。','team.member2.proof':'验证：CV 与算力中心专利','team.member3.name':'战略合作伙伴','team.member3.title':'产业生态','team.member3.desc':'<strong class=\'text-slate-700\'>XFusion</strong>：全球算力基础设施提供商。<br/><strong class=\'text-slate-700\'>英维克</strong>：液冷组件第一品牌，提供全链“Coolinside”。','team.member3.proof':'验证：原型机集成方案',
+        'footer.copy':'© 2025 热阿尔法计划。保留所有权利。','footer.tagline':'为下一代 AI 计算打造智能热管理'
+        ,'chart.labels.0':'传统风冷','chart.labels.1':'现有液冷','chart.labels.2':'热阿尔法方案','chart.dataset':'支持的机柜功率 (kW)','chart.ylabel':'功率 (kW)','improve.label':'提升率 (%)'
+      }
+    };
+
+    let currentLang = 'en'; // always default EN
+    let coolingChart, pueChart;
+
+    function applyI18N(lang){
+      currentLang = lang;
+      const t = I18N[lang];
+      document.title = (lang==='en' ? 'Project Alpha | Intelligent Thermal Management Solution' : '热阿尔法计划 | 智能热管理解决方案');
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(t[key]) el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+        const key = el.getAttribute('data-i18n-html');
+        if(t[key]) el.innerHTML = t[key];
+      });
+      // toggle button state
+      document.querySelectorAll('#langSwitcher .lang-btn').forEach(btn=>{
+        const on = btn.dataset.lang===lang; btn.classList.toggle('active', on); btn.setAttribute('aria-pressed', on);
+      });
+      // redraw charts with localized labels
+      makeCoolingChart();
+      makePUEChart();
+    }
+
+    function coolingDataset(){
+      const t = I18N[currentLang];
+      const labels = [t['chart.labels.0'], t['chart.labels.1'], t['chart.labels.2']];
+      const bars   = [20, 90, 150]; // kW
+      const base   = bars[0];
+      const improv = bars.map(v => Math.round(((v-base)/base)*100)); // %
+      return {labels,bars,improv,t};
+    }
+
+    function pueDataset(){
+      const t = I18N[currentLang];
+      const labels = [t['chart.labels.0'], t['chart.labels.1'], t['chart.labels.2']];
+      const pue    = [1.60, 1.30, 1.15];
+      const base   = pue[0];
+      const saving = pue.map(v => Math.round(((base - v)/base)*1000)/10); // one decimal
+      return {labels,pue,saving,t};
+    }
+
+    function makeCoolingChart(){
+      const el = document.getElementById('coolingChart'); if(!el) return;
+      const {labels,bars,improv,t} = coolingDataset();
+      if(coolingChart) coolingChart.destroy();
+      coolingChart = new Chart(el.getContext('2d'),{
+        data:{ labels,
+          datasets:[
+            { type:'bar', label:t['chart.dataset'], data:bars, yAxisID:'y', backgroundColor:['#9CA3AF','#EF4444','#2563EB'] },
+            { type:'line', label:t['improve.label'], data:improv, yAxisID:'y1', borderColor:'#14B8A6', tension:0.3, pointRadius:4 }
+          ]},
+        options:{ responsive:true, maintainAspectRatio:false,
+          scales:{ y:{ beginAtZero:true, title:{display:true, text:t['chart.ylabel']} },
+                   y1:{ beginAtZero:true, position:'right', grid:{drawOnChartArea:false}, title:{display:true, text:t['improve.label']} } },
+          plugins:{ legend:{display:true}, title:{display:true, text:t['market.chart.mainTitle']} },
+          interaction:{ mode:'index', intersect:false }
+        }
+      });
+    }
+
+    function makePUEChart(){
+      const el = document.getElementById('pueChart'); if(!el) return;
+      const {labels,pue,saving,t} = pueDataset();
+      if(pueChart) pueChart.destroy();
+      pueChart = new Chart(el.getContext('2d'),{
+        data:{ labels,
+          datasets:[
+            { type:'bar', label:(currentLang==='en'?'PUE (lower is better)':'PUE（越低越好）'), data:pue, yAxisID:'y', backgroundColor:['#9CA3AF','#EF4444','#2563EB'] },
+            { type:'line', label:(currentLang==='en'?'Energy Saving (%)':'节能率 (%)'), data:saving, yAxisID:'y1', borderColor:'#14B8A6', tension:0.3, pointRadius:4 }
+          ]},
+        options:{ responsive:true, maintainAspectRatio:false,
+          scales:{ y:{ beginAtZero:true, title:{display:true, text:t['pue.left']} },
+                   y1:{ beginAtZero:true, position:'right', grid:{drawOnChartArea:false}, title:{display:true, text:t['pue.right']} } },
+          plugins:{ legend:{display:true}, title:{display:true, text:t['pue.title']} },
+          interaction:{ mode:'index', intersect:false }
+        }
+      });
+    }
+
+    // mobile menu
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobile = document.getElementById('mobileMenu');
+    if(mobileBtn && mobile){
+      mobileBtn.addEventListener('click', ()=>{
+        const hidden = mobile.classList.toggle('hidden');
+        mobileBtn.setAttribute('aria-expanded', !hidden);
+      });
+    }
+
+    // lang switcher
+    document.getElementById('langSwitcher').addEventListener('click', (e)=>{
+      const btn = e.target.closest('.lang-btn');
+      if(!btn) return; const lang = btn.getAttribute('data-lang');
+      if(lang && lang!==currentLang){ applyI18N(lang); }
+    });
+
+    // init (always EN)
+    document.addEventListener('DOMContentLoaded', ()=>{
+      applyI18N('en');
+    });
+  </script>
+</body>
+</html>
